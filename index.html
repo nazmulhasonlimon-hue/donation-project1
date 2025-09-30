@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Donation Overlay</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: rgba(0,0,0,0.85);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Noto Sans Bengali", Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    #donation-box {
+      background: rgba(20,20,20,0.9);
+      border: 2px solid #ffd166;
+      padding: 20px 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255,209,102,0.7);
+      font-size: 22px;
+      text-align: center;
+      animation: fadein 1s ease;
+    }
+
+    @keyframes fadein {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <div id="donation-box">💰 অপেক্ষায়...</div>
+
+  <script>
+    const donations = [
+      "💰 Nazmul donated ২০০৳ via bKash!",
+      "🔥 Hasan donated ৫০০৳ via Nagad!",
+      "🎉 Limon sent ১০০৳ via Rocket!",
+      "💎 Anonymous donated ১,০০০৳!"
+    ];
+
+    let index = 0;
+    function showDonation() {
+      const box = document.getElementById("donation-box");
+      box.innerText = donations[index];
+      index = (index + 1) % donations.length;
+    }
+
+    // প্রতি ৫ সেকেন্ডে নতুন ডোনেশন শো হবে
+    showDonation();
+    setInterval(showDonation, 5000);
+  </script>
+</body>
+    </html>
